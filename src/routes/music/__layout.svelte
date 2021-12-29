@@ -2,11 +2,17 @@
 	import Editor from "$lib/components/Editor.svelte";
 	import Split from "split.js";
 	import { onMount } from "svelte";
+	import { favorites } from "$lib/stores";
 
 	onMount(() => {
 		Split(["#panel1", "#panel2"], {
 			minSize: 0,
 		});
+		if (localStorage.getItem("fav")) {
+			$favorites = JSON.parse(localStorage.getItem("fav"));
+			console.log($favorites);
+		}
+		favorites.subscribe((val) => localStorage.setItem("fav", JSON.stringify(val)));
 	});
 </script>
 
