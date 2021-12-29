@@ -92,7 +92,7 @@
 				<track kind="captions" />
 			</video>
 			<p class="text-xl md:text-3xl row-start-2 col-start-2 text-center">
-				Search for you favorite artist, start playing any song, hide the music panel and you are
+				Search for your favorite artist, start playing any song, hide the music panel and you are
 				good to go! Listen to music without interruptions and code simultaneously with distractions.
 			</p>
 		</div>
