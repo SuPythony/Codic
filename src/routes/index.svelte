@@ -110,7 +110,7 @@
 						More programming languages including Python, Go, Ruby etc.
 					</p>
 				</AccordionItem>
-				<AccordionItem title="Cloud Integration">
+				<AccordionItem title="Accounts Integration">
 					<p class="text-xl md:text-2xl row-start-2 col-start-2 text-center">
 						Save your code and favorite songs online on the cloud.
 					</p>
