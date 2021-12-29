@@ -10,7 +10,6 @@
 	import { autocompletion } from "@codemirror/autocomplete";
 	import { toasts, ToastContainer, FlatToast } from "svelte-toasts";
 
-	// Autocompletion configuration code taken from https://codemirror.net/6/examples/autocompletion/
 	const completePropertyAfter = ["PropertyName", ".", "?."];
 	const dontCompleteIn = [
 		"TemplateString",
@@ -56,7 +55,6 @@
 			span: /^[\w$]*$/,
 		};
 	}
-	// till here
 
 	let editor: EditorView;
 	let dark = true;
