@@ -2,4 +2,4 @@
 
 Combining Coding and Music
 
-Made with SvelteKit.
+Made with SvelteKit and deployed on Netlify.
