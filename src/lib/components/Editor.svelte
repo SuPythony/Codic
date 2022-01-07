@@ -57,7 +57,7 @@
 	}
 
 	let editor: EditorView;
-	let dark = true;
+	let dark = false;
 	let initialized = false;
 	let editorDiv;
 	let lang = javascript();
@@ -117,6 +117,9 @@
 			};
 		})();
 		messages = [];
+		if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+			dark = true;
+		}
 		initialized = true;
 	});
 

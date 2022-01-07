@@ -140,7 +140,7 @@
 		display: grid;
 		grid-template-columns: 1fr 1fr;
 		grid-template-rows: auto;
-		grid-gap: 10px;
+		gap: 10px;
 		grid-template-areas:
 			"text-1 pic-1 "
 			". pic-1"
