@@ -7,9 +7,16 @@
 	import Github from "svelte-icons/fa/FaGithub.svelte";
 	import { goto } from "$app/navigation";
 	import { DoubleBounce } from "svelte-loading-spinners";
+	import { onMount } from "svelte";
 
-	let openingAnimationPause = false;
+	let openingAnimationPause = true;
 	let loading = false;
+
+	onMount(() => {
+		if (!window.matchMedia("(prefers-reduced-motion)").matches) {
+			openingAnimationPause = false;
+		}
+	});
 </script>
 
 {#if loading}
@@ -46,6 +53,7 @@
 			<button
 				on:click={() => (openingAnimationPause = !openingAnimationPause)}
 				class="opacity-0 group-hover:opacity-100 transition-all duration-200 w-[0.75em]"
+				id="anim-button"
 			>
 				{#if openingAnimationPause}
 					<Play />
@@ -55,27 +63,28 @@
 			</button>
 		</div>
 		<br /><br />
-		<div id="grid-container" class="p-2">
-			<p class="text-xl md:text-3xl row-start-1 col-start-1 text-right">
+		<div id="grid-container" class="p-2 mb-3">
+			<p class="text-xl md:text-3xl [grid-area:text-1] text-right">
 				Search for your favorite artist and presss the play button on any song, Codic will do the
 				rest! Listen to the songs continuously while you code and weave the next great product.
 			</p>
 			<img
 				src="/musicPanel.jpg"
 				alt="Music Panel"
-				class="border-dashed border-2 border-yellow-400 row-start-1 col-start-2"
+				class="border-dashed border-2 border-yellow-400 [grid-area:pic-1]"
 			/>
 			<img
 				src="/editor.jpg"
 				alt="Editor"
-				class="border-dashed border-2 border-yellow-400 row-start-2 col-start-1"
+				class="border-dashed border-2 border-yellow-400 [grid-area:pic-2]"
 			/>
-			<p class="text-xl md:text-3xl row-start-2 col-start-2 text-left">
+			<p class="text-xl md:text-3xl [grid-area:text-2] text-left">
 				Code in an integrated editor with javascript support with an integrated console. Enjoy the
 				dark mode and put less stress on your eyes!
 			</p>
 		</div>
-		<div class="flex flex-col items-center mt-2 gap-2 mb-5">
+		<hr />
+		<div class="flex flex-col items-center mt-5 gap-2 mb-5">
 			<video controls class="w-[75%] border-dashed border-2 border-yellow-400">
 				<source src="/resize.mp4" />
 				<track kind="captions" />
@@ -130,8 +139,13 @@
 	#grid-container {
 		display: grid;
 		grid-template-columns: 1fr 1fr;
-		grid-template-rows: auto auto;
+		grid-template-rows: auto;
 		grid-gap: 10px;
+		grid-template-areas:
+			"text-1 pic-1 "
+			". pic-1"
+			"pic-2 pic-1"
+			"pic-2 text-2";
 	}
 
 	@keyframes up-down {
@@ -156,5 +170,15 @@
 		animation-name: up-down;
 		animation-duration: 1500ms;
 		animation-iteration-count: infinite;
+	}
+
+	@media (prefers-reduced-motion) {
+		#music {
+			animation: none;
+		}
+
+		#anim-button {
+			display: none;
+		}
 	}
 </style>

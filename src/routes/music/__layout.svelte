@@ -10,7 +10,6 @@
 		});
 		if (localStorage.getItem("fav")) {
 			$favorites = JSON.parse(localStorage.getItem("fav"));
-			console.log($favorites);
 		}
 		favorites.subscribe((val) => localStorage.setItem("fav", JSON.stringify(val)));
 	});
